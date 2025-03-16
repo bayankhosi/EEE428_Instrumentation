@@ -1,0 +1,216 @@
+\documentclass[12pt]{article}
+% LaTeX packages and global styles
+\input{base/packages}
+\input{base/style}
+
+% Beginning of the document
+\begin{document}
+    % Title page and unnumbered sections
+    \input{sections/00_front_page}
+    %\input{sections/00_abstract}
+    
+    % Index of the document and figures
+    \begingroup
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+        \listoffigures
+    \endgroup
+    
+    % Change page number style to normal
+    \clearpage\pagenumbering{arabic}
+    
+    % Sections and chapters
+    \input{sections/01_introduction}
+
+    % System Overview
+    \section{System Overview}
+    \label{sec:system_overview}
+    The Factory Alcohol Detection System prevents intoxicated employees from entering the workplace. It integrates alcohol detection with access control. The system operates as follows:
+    \begin{enumerate}
+        \item Employee enters the mantrap.
+        \item Identity is verified using fingerprint.
+        \item Alcohol sensor analyzes breath sample.
+        \item If alcohol level is within limits, exit door opens.
+        \item If above limit, alarm triggers, and incident is logged.
+        \item Prior records are checked for suspension or dismissal if the limit is exceeded.
+    \end{enumerate}
+
+    % Study of the Plant
+    \section{Study of the Plant (Factory Entrance and Access Control)}
+    \label{sec:plant_study}
+    \subsection{Purpose}
+    The system regulates employee access, ensuring a safe and secure working environment by preventing intoxicated employees from entering.
+
+    \subsection{Inputs and Outputs}
+    \begin{itemize}
+        \item Inputs:
+        \begin{itemize}
+            \item Breath alcohol concentration (BrAC).
+            \item Employee identification data (fingerprint).
+        \end{itemize}
+        \item Outputs:
+        \begin{itemize}
+            \item Gate access control (open/close signals).
+            \item Alarm activation (visual and auditory signals).
+            \item Incident logs (employee ID, timestamp, alcohol level).
+        \end{itemize}
+    \end{itemize}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/flowChart.png}
+        \caption{Block Diagram of Inputs and Outputs}
+    \end{figure}
+
+    \subsection{Challenges}
+    \begin{itemize}
+        \item High employee traffic during shift changes.
+        \item Environmental factors (e.g., dust, humidity) affecting sensor performance.
+        \item False positives due to ambient alcohol (e.g., cleaning agents).
+    \end{itemize}
+
+    % Subsystem Decomposition
+    \section{Subsystem Decomposition}
+    \label{sec:subsystem_decomposition}
+    The system is divided into mechanical, electrical/electronic, and software subsystems.
+
+    \subsection{Mechanical Subsystem}
+    \begin{itemize}
+        \item Mantrap Structure: Secure enclosure with entry and exit gates.
+        \item Gate Mechanism: Electrically controlled doors.
+    \end{itemize}
+
+    \subsection{Electrical/Electronic Subsystem}
+    \begin{itemize}
+        \item Alcohol Sensor: Detects BrAC.
+        \item Fingerprint Reader: Verifies identity.
+        \item Microcontroller: Processes data and controls actuators.
+        \item Actuators: Operate gates and alarms.
+    \end{itemize}
+
+    \subsection{Software Subsystem}
+    \begin{itemize}
+        \item Data Acquisition: Collects sensor data.
+        \item Decision-Making Logic: Determines access based on alcohol levels.
+        \item Logging and Reporting: Records incidents and generates reports.
+    \end{itemize}
+
+    % Operating Requirements
+    \section{Operating Requirements (Performance Specifications)}
+    \label{sec:operating_requirements}
+    \begin{itemize}
+        \item Alcohol Detection:
+        \begin{itemize}
+            \item Detection Range: 0.00\% - 0.20\% BrAC.
+            \item Accuracy: $\pm 0.01\%$ BrAC.
+            \item Response Time: $\leq 3$ seconds.
+        \end{itemize}
+        \item Access Control:
+        \begin{itemize}
+            \item Gate Operation: $\leq 2$ seconds.
+        \end{itemize}
+        \item Data Logging:
+        \begin{itemize}
+            \item Storage Capacity: 10,000 records.
+        \end{itemize}
+        \item Power Requirements:
+        \begin{itemize}
+            \item Voltage: 24V DC.
+            \item Power Consumption: $\leq 50$W.
+        \end{itemize}
+    \end{itemize}
+
+    % Constraints
+    \section{Constraints}
+    \label{sec:constraints}
+    \begin{itemize}
+        \item Size and Weight: Must fit within factory entrance footprint.
+        \item Environmental Conditions: Operate in $0^\circ$C to $40^\circ$C and 10\% - 90\% humidity.
+        \item Power Requirements: 24V DC, $\leq 50$W.
+        \item Security: Tamper-proof data storage and secure communication.
+        \item Maintenance: Sensor calibration every 6 months.
+        \item Compliance: Occupational Safety and Health Act, 2001 (No. 9 of 2001) of Eswatini.
+        \item Compliance: Factory standards
+    \end{itemize}
+
+    % Component Selection
+    \section{Component Selection}
+    \label{sec:component_selection}
+    \begin{itemize}
+        \item Alcohol Sensor: MQ-3 gas sensor (0.00\% - 0.20\% BAC).
+        \item Fingerprint Reader: FPM10A module.
+        \item Gate Mechanism: 24V DC electric door locks ($\leq 2$ seconds).
+        \item Alarm System: 85 dB buzzer and LED indicators.
+        \item Microcontroller: Arduino Uno R3.
+        \item Power Supply: 24V DC with overcurrent/overvoltage protection.
+        \item Data Storage: SD card module (10,000 records).
+    \end{itemize}
+
+    % System Architecture
+    \section{System Architecture}
+    \label{sec:system_architecture}
+    \begin{itemize}
+        \item Mechanical Subsystem: Mantrap structure and gates.
+        \item Electrical/Electronic Subsystem: Sensors, actuators, and control unit.
+        \item Software Subsystem: Data acquisition, decision-making, and logging.
+    \end{itemize}
+
+% Flowchart Styles
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=yellow!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Flowchart
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+        \node (start) [startstop] {Start};
+        \node (idCheck) [process, below of=start] {Employee scans ID};
+        \node (baseline) [process, below of=idCheck] {Read baseline alcohol level};
+        \node (test) [process, below of=baseline] {Employee provides breath sample};
+        \node (analyze) [process, below of=test] {Analyze alcohol level};
+        \node (decision) [decision, below of=analyze] {Above limit?};
+        \node (suspendCheck) [decision, right of=decision, xshift=4cm] {Prior offense?};
+        \node (suspend) [startstop, below of=suspendCheck, yshift=-2cm] {Suspend Employee, Log Incident};
+        \node (deny) [startstop, above of=suspendCheck, yshift=2cm] {Access Denied, Log Incident};
+        \node (allow) [startstop, below of=decision, yshift=-2cm] {Grant Access};
+        
+        \draw [arrow] (start) -- (idCheck);
+        \draw [arrow] (idCheck) -- (baseline);
+        \draw [arrow] (baseline) -- (test);
+        \draw [arrow] (test) -- (analyze);
+        \draw [arrow] (analyze) -- (decision);
+        \draw [arrow] (decision.east) -- (suspendCheck.west) node[midway, above] {Yes};
+        \draw [arrow] (suspendCheck.north) -- (deny.south) node[midway, right] {No Prior Offense};
+        \draw [arrow] (suspendCheck.south) -- (suspend.north) node[midway, right] {Prior Offense};
+        \draw [arrow] (decision.south) -- (allow.north) node[midway, right] {No};
+    \end{tikzpicture}
+    \caption{Flowchart of Alcohol Detection System}
+\end{figure}
+
+    % Implementation Plan
+%    \section{Implementation Plan}
+%    \label{sec:implementation_plan}
+%    \begin{itemize}
+%        \item Phase 1: Prototype Development (Arduino Uno, MQ-3 sensor).
+%        \item Phase 2: Field Testing (real-world installation).
+%        \item Phase 3: Full-Scale Deployment (industrial-grade PLC).
+%        \item Phase 4: Monitoring and Optimization (continuous improvement).
+%    \end{itemize}
+
+    % Conclusion
+    \section{Conclusion}
+    \label{sec:conclusion}
+    The Factory Alcohol Detection System enhances workplace safety by preventing intoxicated employees from entering. It integrates alcohol detection with access control, ensuring compliance with legal standards. Future work will focus on scalability and additional safety features.
+
+    % Appendix
+    \appendix
+    \input{sections/appendix}
+
+    % Bibliography 
+    \bibliographystyle{plainnat}
+    \bibliography{bibliography.bib}
+
+% End of the document
+\end{document}
