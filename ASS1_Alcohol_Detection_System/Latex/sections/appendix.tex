@@ -25,7 +25,7 @@ The circuit diagram for the system is shown in Figure~\ref{fig:circuit_diagram}.
     \centering
     \includegraphics[width=0.8\textwidth]{images/schematic.png}
     \caption{Schematic Diagram of the Alcohol Detection System}
-    \label{fig:circuit_diagram}
+    \label{fig:schematic_diagram}
 \end{figure}
 
 \subsection{Power Supply Design}
@@ -40,13 +40,12 @@ The power supply circuit provides 24V DC to the system. It includes:
 
 This section includes the image for the mantrap structure and breathalyzer.
 
-% Insert the 3D model
-\includemedia[
-    width=0.8\textwidth,
-    height=0.6\textwidth,
-    activate=pageopen,
-    3Dmenu,
-]{}{images/assembly.u3d}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/assembly.JPG}
+    \caption{Diagram of the Alcohol Detection System Enclosure}
+    \label{fig:3d_diagram}
+\end{figure}
 
 \subsection{Mantrap Structure}
 The mantrap structure is designed to ensure controlled entry and exit of employees. Key features include:
@@ -57,17 +56,17 @@ The mantrap structure is designed to ensure controlled entry and exit of employe
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/mantrap_drawing.png}
+    \includegraphics[width=0.5\textwidth]{images/mantrap_drawing.png}
     \caption{Picture of the Mantrap Structure}
     \label{fig:mantrap_drawing}
 \end{figure}
 
-\subsection{Gate Mechanism}
-The gate mechanism is powered by 24V DC electric door locks. It includes:
-\begin{itemize}
-    \item Electrically controlled doors with a response time of $\leq 2$ seconds.
-    \item Safety sensors to prevent accidental closure.
-\end{itemize}
+%\subsection{Gate Mechanism}
+%The gate mechanism is powered by 24V DC electric door %locks. It includes:
+%\begin{itemize}
+%    \item Electrically controlled doors with a response time of $\leq 2$ seconds.
+%    \item Safety sensors to prevent accidental closure.
+%\end{itemize}
 
 \section{Source Code}
 \label{app:source_code}

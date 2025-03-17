@@ -29,7 +29,7 @@
     \begin{enumerate}
         \item Employee enters the mantrap.
         \item Identity is verified using fingerprint.
-        \item Alcohol sensor analyzes breath sample.
+        \item Alcohol sensor\cite{mq3_sensor} analyzes breath sample.
         \item If alcohol level is within limits, exit door opens.
         \item If above limit, alarm triggers, and incident is logged.
         \item Prior records are checked for suspension or dismissal if the limit is exceeded.
@@ -38,6 +38,14 @@
     % Study of the Plant
     \section{Study of the Plant (Factory Entrance and Access Control)}
     \label{sec:plant_study}
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.8\textwidth]{images/layout.png}
+        \caption{Layout of the Factory Entrance}
+        \label{fig:entrance_layout}
+    \end{figure}
+
     \subsection{Purpose}
     The system regulates employee access, ensuring a safe and secure working environment by preventing intoxicated employees from entering.
 
@@ -65,6 +73,7 @@
     \subsection{Challenges}
     \begin{itemize}
         \item High employee traffic during shift changes.
+        \item Ensuring data privacy in accordance with "The Data Protection Act, 2022"\cite{eswatini_data_protection_act} of Eswatini. 
         \item Environmental factors (e.g., dust, humidity) affecting sensor performance.
         \item False positives due to ambient alcohol (e.g., cleaning agents).
     \end{itemize}
@@ -130,7 +139,7 @@
         \item Security: Tamper-proof data storage and secure communication.
         \item Maintenance: Sensor calibration every 6 months.
         \item Compliance: Occupational Safety and Health Act, 2001 (No. 9 of 2001) of Eswatini.
-        \item Compliance: Factory standards
+        \item Compliance: Factory standards\cite{industrial_safety}
     \end{itemize}
 
     % Component Selection
@@ -141,9 +150,9 @@
         \item Fingerprint Reader: FPM10A module.
         \item Gate Mechanism: 24V DC electric door locks ($\leq 2$ seconds).
         \item Alarm System: 85 dB buzzer and LED indicators.
-        \item Microcontroller: Arduino Uno R3.
+        \item Microcontroller: Arduino Uno R3\cite{arduino_uno}.
         \item Power Supply: 24V DC with overcurrent/overvoltage protection.
-        \item Data Storage: SD card module (10,000 records).
+        \item Data Storage: SD card module\cite{data_logging} (10,000 records).
     \end{itemize}
 
     % System Architecture
@@ -202,7 +211,7 @@
     % Conclusion
     \section{Conclusion}
     \label{sec:conclusion}
-    The Factory Alcohol Detection System enhances workplace safety by preventing intoxicated employees from entering. It integrates alcohol detection with access control, ensuring compliance with legal standards. Future work will focus on scalability and additional safety features.
+    The Factory Alcohol Detection System enhances  workplace safety by preventing intoxicated employees from entering. It integrates alcohol detection with access control, ensuring compliance with legal standards. Future work will focus on scalability and additional safety features.
 
     % Appendix
     \appendix
